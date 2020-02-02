@@ -17,7 +17,7 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 import com.busreservationsystem.application.model.AgencyModel;
-import com.busreservationsystem.application.model.Bus;
+import com.busreservationsystem.application.model.BusModel;
 
 @Entity
 @Table(name ="trip")
@@ -45,18 +45,20 @@ public class TripDto {
 //	@OneToOne
 //	@JoinColumn(name="bus",nullable=false)
 //	private Bus bus;
-//	
-	//@Column(name="agency",nullable=false)
-	/*
-	 * @OneToOne
-	 * 
-	 * @JoinColumn(name="agency") private AgencyDto agency;
-	 */
-
-	/*
-	 * public AgencyDto getAgency() { return agency; } public void
-	 * setAgency(AgencyDto agency) { this.agency = agency; }
-	 */
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	  @JoinColumn(name="agency")
+	  private AgencyDto agency;
+ 
+	
+	public AgencyDto getAgency() {
+		  return agency;
+	}
+	public void	setAgency(AgencyDto agency) {
+		this.agency = agency;
+	}
+	 
 	public void setId(int id) {
 		this.id=id;
 	}

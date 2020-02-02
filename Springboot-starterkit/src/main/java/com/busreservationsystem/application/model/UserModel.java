@@ -1,6 +1,6 @@
 package com.busreservationsystem.application.model;
 
-public class User {
+public class UserModel {
 
 	
 	private int id;

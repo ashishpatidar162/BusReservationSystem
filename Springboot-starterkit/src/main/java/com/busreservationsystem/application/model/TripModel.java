@@ -1,7 +1,7 @@
 package com.busreservationsystem.application.model;
 
 
-public class Trip {
+public class TripModel {
 
 	private int id;
 	

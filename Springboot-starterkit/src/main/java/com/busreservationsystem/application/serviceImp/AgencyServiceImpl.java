@@ -12,44 +12,47 @@ import org.springframework.stereotype.Component;
 import com.busreservationsystem.application.dto.common.AgencyDto;
 import com.busreservationsystem.application.model.AgencyModel;
 import com.busreservationsystem.application.repository.AgencyRepository;
-import com.busreservationsystem.application.service.Service;
+import com.busreservationsystem.application.service.AgencyService;
 
 
 
 @Component
-public class ServiceImpl implements Service {
+public class AgencyServiceImpl implements AgencyService {
 
 
 	@Autowired
 	AgencyRepository agencyRepository;
 	
 	private Mapper mapper = new DozerBeanMapper();
+	
+	//Creating Agency Data
+	public AgencyDto createPostAgency(AgencyModel agencyModel) {	
+	
+		//Convert model into DTO.
+		AgencyDto agencyDto = mapper.map(agencyModel, AgencyDto.class);
+		AgencyDto savedData = agencyRepository.save(agencyDto);	
+		
+		return savedData;
 
-	public AgencyDto createPostAgency(AgencyModel agencyModel) {
-		
-		
-				//Convert model into DTO.
-				AgencyDto agencyDto = mapper.map(agencyModel, AgencyDto.class);
-				AgencyDto savedData = agencyRepository.save(agencyDto);	
-				
-				return savedData;
-		
 	}
+	
+	//Get Agency Data 
 	public List<AgencyModel> getAgency(){
 		
 	List<AgencyDto>	agencyListDto=agencyRepository.findAll();
-	
+
 	List<AgencyModel> savedData=new ArrayList<>();
-	    //convert DTO to Model
+	
+	   //convert DTO to Model
 	ListIterator list=agencyListDto.listIterator();
-	while(list.hasNext()) {
+		while(list.hasNext()) {
+			
+			AgencyDto   ADTO=(AgencyDto)list.next();
+			System.out.print(ADTO);    
+			
 		
-		    AgencyDto   ADTO=(AgencyDto)list.next();
-		    
-	   savedData= mapper.map(ADTO, AgencyModel.class);
-	  
-	   
-	     return savedData;
-	}
+		//	savedData= mapper.map(, AgencyModel.class);
+		}
+		return savedData;
 	}
 }

@@ -1,5 +1,5 @@
 package com.busreservationsystem.application.model;
 
-public class Bus {
+public class BusModel {
 
 }

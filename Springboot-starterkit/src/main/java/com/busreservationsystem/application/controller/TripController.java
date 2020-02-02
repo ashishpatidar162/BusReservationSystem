@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.busreservationsystem.application.dto.common.AgencyDto;
-import com.busreservationsystem.application.model.AgencyModel;
-import com.busreservationsystem.application.repository.AgencyRepository;
+import com.busreservationsystem.application.dto.common.TripDto;
+import com.busreservationsystem.application.model.TripModel;
 import com.busreservationsystem.application.repository.TripRepository;
-import com.busreservationsystem.application.serviceImp.ServiceImpl;
+import com.busreservationsystem.application.serviceImp.TripServiceImpl;
 
 
 @CrossOrigin(origins = "*")
@@ -28,33 +27,21 @@ public class TripController {
 	TripRepository tripRepository;
 	
 	@Autowired
-	AgencyRepository agencyRepository;
-	
-	@Autowired
-	private ServiceImpl serviceImpl;
+	private TripServiceImpl tripServiceImpl;
 	
 	private Mapper mapper = new DozerBeanMapper();
-	
-//	Mapper ma
-	
-	@GetMapping("/Agency")
-	public List<AgencyDto> getAllTrips() {
-		return agencyRepository.findAll();
+
+	@GetMapping("/Trip")
+	public List<TripDto> getAllTrips() {
+		return tripRepository.findAll();
 	}
 	
-	@PostMapping("/agencyCreate")
-	public AgencyModel createAgency(@RequestBody AgencyModel agencyModel) {
-		System.out.println("In create agency method."+ agencyModel);
+	@PostMapping("/tripCreate")
+	public TripModel createTrip(@RequestBody TripModel tripModel) {
+		System.out.println("In create trip method."+ tripModel);
 		
-		AgencyDto savedData=serviceImpl.createPostAgency(agencyModel);
-		
-		//call service layer here.
-		
-		
-		//Convert model into DTO.
-//		AgencyDto agencyDto = mapper.map(agencyModel, AgencyDto.class);
-//		AgencyDto savedData = agencyRepository.save(agencyDto);
-		
-		return mapper.map(savedData, AgencyModel.class);
+		TripDto savedData=tripServiceImpl.createPostTrip(tripModel);
+			
+		return mapper.map(savedData, TripModel.class);
 	}
 }
