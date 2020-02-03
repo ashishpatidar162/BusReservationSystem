@@ -44,14 +44,14 @@ public class AgencyServiceImpl implements AgencyService {
 	List<AgencyModel> savedData=new ArrayList<>();
 	
 	   //convert DTO to Model
-	ListIterator list=agencyListDto.listIterator();
+	ListIterator<AgencyDto> list=agencyListDto.listIterator();
 		while(list.hasNext()) {
 			
-			AgencyDto   ADTO=(AgencyDto)list.next();
-			System.out.print(ADTO);    
+			AgencyDto   ato=(AgencyDto)list.next();
+			System.out.print(ato);    
 			
 		
-		//	savedData= mapper.map(, AgencyModel.class);
+			savedData.add(mapper.map(ato, AgencyModel.class));
 		}
 		return savedData;
 	}
