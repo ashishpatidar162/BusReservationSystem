@@ -1,0 +1,3 @@
+2020-02-04 19:32:46 [main] INFO  c.b.a.BusReservationSystemApplication - Starting BusReservationSystemApplication on mindbowser-Latitude-E7450 with PID 16626 (started by mindbowser in /home/mindbowser/Documents/Git repo/BRS_Latest/BusReservationSystem/Springboot-starterkit)
+2020-02-04 19:32:46 [main] DEBUG c.b.a.BusReservationSystemApplication - Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-04 19:32:46 [main] INFO  c.b.a.BusReservationSystemApplication - The following profiles are active: test
